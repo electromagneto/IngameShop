@@ -1,0 +1,45 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/styles.css">
+
+  <title>Hacktiv Game Shop</title>
+    <h1>Hacktiv Game Shop</h1>
+
+
+</head>
+
+<body>
+  <!-- your content here... -->
+<a href="/login" text-align: left>Profile</a>
+<a href="/login" text-align: right>Login</a>
+  <table>
+    <thead>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Stock</th>
+        <th>Buy</th>
+
+    </thead>
+    <tbody>
+        <% result.forEach((el) =>{%>
+            <tr class="item-list">
+                    <td><%= el.name %></td>
+                    <td><%= el.price %> </td>
+                    <td><%= el.Stock %> </td>
+                    <td><form action="/login" method="get">
+                        <input type="number" name="quantity">
+                        <input type="submit" value="Buy">
+                    </form></td>
+                
+            </tr>
+        <% }) %> 
+
+    </tbody>
+</table>
+  <script type="text/javascript" src="js/setup.js"></script>
+</body>
+</html>
