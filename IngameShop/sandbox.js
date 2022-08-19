@@ -1,3 +1,5 @@
+'use strict';
+
 const fs = require('fs');
 
 let accounts = JSON.parse(fs.readFileSync('./data/accounts.json', 'utf-8'));

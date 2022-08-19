@@ -1,9 +1,9 @@
 'use strict';
 
-const express = require('express')
-const app = express()
-const routes = require('./routes/routes')
-const port = 3000
+const express = require('express');
+const app = express();
+const routes = require('./routes/routes');
+const port = 3000;
 
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({extended: true}));

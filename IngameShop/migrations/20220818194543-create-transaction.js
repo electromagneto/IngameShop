@@ -9,24 +9,28 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       quantity: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        allowNull: false,
       },
       total: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        allowNull: false,
       },
       ItemId: {
         references:{
           model: 'Items',
           key: "id"
         },
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        allowNull: false,
       },
       UserId: {
         references:{
           model: 'Users',
           key: "id"
         },
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        allowNull: false,
       },
       createdAt: {
         allowNull: false,
