@@ -64,7 +64,5 @@ const profiles = JSON.parse(fs.readFileSync('./data/accounts.json', 'utf-8'))
     }
   });
 
-
-
 console.log(users);
 console.log(profiles);
