@@ -1,37 +1,38 @@
-const {User, UserDetail, Item, Transaction} = require('../models/index')
+const { User, Profile, Item, Transaction } = require('../models')
 
 class Controller{
     static loginForm(req, res){
-        res.render('loginForm.ejs')
+        res.render('loginForm.ejs');
     }
     static postLogin(req,res){
-        const {email, password} = req.body
-        User.findOne({where: {email: `${email}`}})
+        const {email, password} = req.body;
+        User.findOne({where: {email: `${email}`}});
     }
     static registerForm(req, res){
         res.render('registerForm.ejs')
     }
     static postRegister(req,res){
-        const {name, password, email, profilePicture} = req.body
+        const {name, password, email, profilePicture} = req.body;
         User.create({email,password})
         .then((result) =>{
-            UserDetail.create({name, profilePicture, UserId: result.id})
+            Profile.create({name, profilePicture, UserId: result.id})
         })
         .then(() =>{
-            res.redirect('/login')
+            res.redirect('/login');
         })
         .catch((err) =>{
-            res.send(err)
-        })
+            res.send(err);
+        });
     }
+
     static home(req,res){
         Item.findAll()
         .then((result) =>{
-            res.render('home.ejs', {result})
+            res.render('home.ejs', {result});
         })
         .catch((err) =>{
-            res.send(err)
-        })
+            res.send(err);
+        });
     }
 }
 
