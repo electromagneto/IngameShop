@@ -14,15 +14,13 @@
 
 <body>
   <!-- your content here... -->
-  
-<a href="/userDetail/<%= id %> " text-align: left>Profile</a>
-<a href="/logout" text-align: right>Logout</a>
+
   <table border="2">
     <thead>
         <th>Name</th>
         <th>Price</th>
         <th>Stock</th>
-        <th>Buy</th>
+        <th>Action</th>
 
     </thead>
     <tbody>
@@ -31,10 +29,7 @@
                     <td><%= el.name %></td>
                     <td><%= el.price %> </td>
                     <td><%= el.stock %> </td>
-                    <td><form action="/buy/<%= id %>/<%= el.id %> " method="post">
-                        <input type="number" name="quantity">
-                        <input type="submit" value="Buy">
-                    </form></td>
+                    <td><a href=""><button>Edit stock</button></a> </td>
                 
             </tr>
         <% }) %> 

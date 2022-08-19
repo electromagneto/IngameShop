@@ -11,8 +11,9 @@ routes.get('/logout', Controller.loginForm)
 routes.get('/userDetail/:UserId', Controller.userProfile)
 routes.get('/transactionHistory/:UserId', Controller.transactionHistory)
 routes.post('/buy/:UserId/:ItemId', Controller.buy)
-routes.get('confirm/:TransactionId',)
-routes.post('confirm/:TransactionId',)
+routes.get('/confirm/:TransactionId', Controller.confirm)
+routes.post('/confirm/:TransactionId', Controller.postConfirm)
+routes.get('/transactionCancel/:UserId/:TransactionId', Controller.cancelTransaction)
 routes.get('/adminHome',)
 
 module.exports = routes

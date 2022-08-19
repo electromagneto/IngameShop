@@ -72,7 +72,7 @@ class Controller{
     }
     static transactionHistory(req,res){
         let id = req.params.UserId
-        Transaction.findAll({include: User, where:{id: `${+id}`}})
+        Transaction.findAll({include: Item, where:{UserId: `${+id}`}})
         .then((result) =>{
             res.render('transactionHistory.ejs',{result, id})
         })
@@ -122,9 +122,50 @@ class Controller{
         .then((result) =>{
             let total = (+quantity) * (+result.price)
             Transaction.create({quantity: (+quantity),total,ItemId, UserId})
+            .then((result2)=>{
+                res.redirect(`/confirm/${result2.id}`)
+            })
         })
-        .then((result)=>{
-            
+        
+        .catch((err) =>{
+            res.send(err)
+        })
+    }
+    static confirm(req,res){
+        let id = req.params.TransactionId
+        Transaction.findOne({include: Item, where: {id: `${id}`}})
+        .then((result) =>{
+            res.render('confirmBuy.ejs', {result})
+        })
+        .catch((err) =>{
+            res.send(err)
+        })
+    }
+    static cancelTransaction(req,res){
+        let id = req.params.TransactionId
+        let userId = req.params.UserId
+        Transaction.destroy({where: {id: `${+id}`}})
+        .then(()=>{
+            res.redirect(`/main/${userId}`)
+        })
+        .catch((err) =>{
+            res.send(err)
+        })
+    }
+    static adminHome(req,res){
+        Item.findAll()
+        .then((result) =>{
+
+        })
+        .catch((err) =>{
+            res.render(err)
+        })
+    }
+    static postConfirm(req,res){
+        let id = req.params.TransactionId
+        Transaction.findOne({where: {id: `${id}`}})
+        .then((result) =>{
+            res.redirect(`/main/${result.UserId}`)
         })
         .catch((err) =>{
             res.send(err)
