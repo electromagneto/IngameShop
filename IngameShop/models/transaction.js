@@ -11,12 +11,20 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Transaction.hasOne(models.Item, {foreignKey: 'ItemId'})
+      Transaction.belongsTo(models.Item, {foreignKey: 'ItemId'})
       Transaction.belongsTo(models.User, {foreignKey: 'UserId'})
     }
   }
   Transaction.init({
-    quantity: DataTypes.INTEGER,
+    quantity: {
+      type: DataTypes.INTEGER,
+      validate:{
+        min: {
+          args: 1,
+          msg: "Minimum buy 1!"
+        }
+      }
+    },
     total: DataTypes.INTEGER,
     ItemId: DataTypes.INTEGER,
     UserId: DataTypes.INTEGER

@@ -11,13 +11,21 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Item.belongsTo(models.Transaction, {foreignKey: 'ItemId'})
+      Item.hasMany(models.Transaction, {foreignKey: 'ItemId'})
     }
   }
   Item.init({
     name: DataTypes.STRING,
     price: DataTypes.INTEGER,
-    stock: DataTypes.INTEGER
+    stock: {
+      type: DataTypes.INTEGER,
+      validate: {
+        min:{
+          args: 0,
+          msg: " Minimum stock is 0"
+        }
+      }
+    }
   }, {
     sequelize,
     modelName: 'Item',
