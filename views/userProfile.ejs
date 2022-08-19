@@ -1,0 +1,28 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/styles.css">
+
+  <title>Hacktiv In Game Shop</title>
+    <h1>Hacktiv In Game Shop</h1>
+
+
+</head>
+
+<body>
+  <!-- your content here... -->
+<a href="/main/<%= result.User.id %> ">Back to menu</a>
+<center><img scr="<%= result.profilePicture %>"></center>
+<form>
+<div>
+    <label>Name : <%= result.name%></label><br>
+    <label>E-mail : <%= result.User.email%></label><br>
+</div>
+</form>
+<a href="/transactionHistory/<%= result.User.id %> ">View Transaction History</a>
+  <script type="text/javascript" src="js/setup.js"></script>
+</body>
+</html>

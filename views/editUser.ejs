@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Edit User</title>
+  </head>
+  <body>
+    <main>
+        <h1>Edit User</h1>
+        <form method="post" action="/userEdit/<%= id %> ">
+            <div>
+                <label>Name</label><br>
+                <input type="text" name="name" value="<%= result.name %> "/>
+            </div>
+            <div>
+                <label>Password (Don't fill if you don't want to change your password)</label><br>
+                <input type="password" name="newPassword"/>
+            </div>
+            <div>
+                <label>E-mail</label><br>
+                <input type="email" name="email" value="<%= result.User.email %> "/>
+            </div>
+            <div>
+                <label>profilePicture</label><br>
+                <input type="text" name="profilePicture" value="<%= result.profilePicture %> " />
+            </div>
+            <div>
+                <label>Enter your old pasword to confirm</label><br>
+                <input type="password" name="password"/>
+            </div>
+            <div>
+                <input type="submit" value="Submit">
+            </div>
+        </form>
+    </main>
+	<script src="index.js"></script>
+  </body>
+</html>
