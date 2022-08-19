@@ -6,17 +6,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="css/styles.css">
 
-  <title>Hacktiv Game Shop</title>
-    <h1>Hacktiv Game Shop</h1>
+  <title>Hacktiv In Game Shop</title>
+    <h1>Hacktiv In Game Shop</h1>
 
 
 </head>
 
 <body>
   <!-- your content here... -->
-<a href="/login" text-align: left>Profile</a>
-<a href="/login" text-align: right>Login</a>
-  <table>
+  
+<a href="/userDetail/<%= id %> " text-align: left>Profile</a>
+<a href="/logout" text-align: right>Logout</a>
+  <table border="2">
     <thead>
         <th>Name</th>
         <th>Price</th>
@@ -29,8 +30,8 @@
             <tr class="item-list">
                     <td><%= el.name %></td>
                     <td><%= el.price %> </td>
-                    <td><%= el.Stock %> </td>
-                    <td><form action="/login" method="get">
+                    <td><%= el.stock %> </td>
+                    <td><form action="/buy/<%= id %>/<%= el.id %> " method="get">
                         <input type="number" name="quantity">
                         <input type="submit" value="Buy">
                     </form></td>

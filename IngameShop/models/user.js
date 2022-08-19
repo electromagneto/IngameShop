@@ -12,14 +12,22 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      User.hasOne(models.Profile, {foreignKey: 'UserId'})
+      User.hasOne(models.UserDetail, {foreignKey: 'UserId'})
     }
   }
   User.init({
-    email: DataTypes.STRING,
+    email: {
+      type:DataTypes.STRING,
+      allowNull: false,
+      validate:{
+        isEmail:{
+          msg: "Not a valid E-mail!"
+        }
+      }
+    },
     password: {
       type: DataTypes.STRING,
-      
+      allowNull: false,
     },
     role: DataTypes.BOOLEAN
   }, {
