@@ -1,7 +1,9 @@
 'use strict';
 
 const fs = require('fs');
+const bcrypt = require('bcryptjs');
 
+//Image URLs for profile pictures
 let accounts = JSON.parse(fs.readFileSync('./data/accounts.json', 'utf-8'));
 
 const imageURL = [
@@ -38,10 +40,12 @@ strAccounts = JSON.stringify(accounts, null, 2);
 console.log(strAccounts);
 fs.writeFileSync('./data/accounts.json', strAccounts);
 
-/*
+//Parse data from JSON file
 const users = JSON.parse(fs.readFileSync('./data/accounts.json', 'utf-8'))
   .map((el) => {
-    const { email, password, role } = el;
+    let { email, password, role } = el;
+    const salt = bcrypt.genSaltSync(5);
+    password = bcrypt.hashSync(password, salt);
     return {
       email, password, role,
       createdAt: new Date(),
@@ -51,7 +55,7 @@ const users = JSON.parse(fs.readFileSync('./data/accounts.json', 'utf-8'))
 
 const profiles = JSON.parse(fs.readFileSync('./data/accounts.json', 'utf-8'))
   .map((el) => {
-    const { name, profilePicture, id } = el;
+    let { name, profilePicture, id } = el;
     return {
       name, profilePicture,
       UserId: id,
@@ -60,6 +64,7 @@ const profiles = JSON.parse(fs.readFileSync('./data/accounts.json', 'utf-8'))
     }
   });
 
+
+
 console.log(users);
 console.log(profiles);
- */
