@@ -45,7 +45,7 @@ class Controller{
         })
     }
     static home(req,res){
-        Item.findAll()
+        Item.findAll({include: {model: User}})
         .then((result) =>{
             res.render('home.ejs', {result})
         })
