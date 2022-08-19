@@ -1,5 +1,42 @@
 const fs = require('fs');
 
+let accounts = JSON.parse(fs.readFileSync('./data/accounts.json', 'utf-8'));
+
+const imageURL = [
+  "https://randomuser.me/api/portraits/men/1.jpg",
+  "https://randomuser.me/api/portraits/women/1.jpg",
+  "https://randomuser.me/api/portraits/women/2.jpg",
+  "https://randomuser.me/api/portraits/women/3.jpg",
+  "https://randomuser.me/api/portraits/men/2.jpg",
+  "https://randomuser.me/api/portraits/women/4.jpg",
+  "https://randomuser.me/api/portraits/women/5.jpg",
+  "https://randomuser.me/api/portraits/men/3.jpg",
+  "https://randomuser.me/api/portraits/men/4.jpg",
+  "https://randomuser.me/api/portraits/women/6.jpg",
+  "https://randomuser.me/api/portraits/men/5.jpg",
+  "https://randomuser.me/api/portraits/men/6.jpg",
+  "https://randomuser.me/api/portraits/men/7.jpg",
+  "https://randomuser.me/api/portraits/men/8.jpg",
+  "https://randomuser.me/api/portraits/women/7.jpg",
+  "https://randomuser.me/api/portraits/men/9.jpg",
+  "https://randomuser.me/api/portraits/women/8.jpg",
+  "https://randomuser.me/api/portraits/women/9.jpg",
+  "https://randomuser.me/api/portraits/men/10.jpg",
+  "https://randomuser.me/api/portraits/women/10.jpg",
+]
+
+for (let i = 0; i < imageURL.length; i++) {
+  for (let j = 0; j < accounts.length; j++) {
+    accounts[j].profilePicture = imageURL[i];
+    i++;
+  }
+}
+
+strAccounts = JSON.stringify(accounts, null, 2);
+console.log(strAccounts);
+fs.writeFileSync('./data/accounts.json', strAccounts);
+
+/*
 const users = JSON.parse(fs.readFileSync('./data/accounts.json', 'utf-8'))
   .map((el) => {
     const { email, password, role } = el;
@@ -21,6 +58,6 @@ const profiles = JSON.parse(fs.readFileSync('./data/accounts.json', 'utf-8'))
     }
   });
 
-
-  // console.log(users);
-  console.log(profiles);
+console.log(users);
+console.log(profiles);
+ */
